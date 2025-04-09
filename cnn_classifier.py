@@ -1,5 +1,5 @@
 import nltk
-nltk.download('stopwords')
+# nltk.download('stopwords')
 from nltk import FreqDist
 from nltk.corpus import stopwords
 import pandas as pd
@@ -7,6 +7,18 @@ import numpy as np
 import re
 
 from sklearn import metrics
+
+import ssl
+
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
+import nltk
+nltk.download('stopwords')
 
 stops = stopwords.words('english')
 stops.extend([",", ".", "!", "?", "'", '"', "I", "i", "n't", "'ve", "'d", "'s"])
